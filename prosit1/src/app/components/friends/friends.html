@@ -1,0 +1,19 @@
+<section id="amis" class="panel panel-green">
+  <div class="icon">👥</div>
+  <div>
+    <h2>Liste des amis</h2>
+
+    <!-- Two-way data binding : 3 champs liés à la même propriété -->
+    <div>
+      <input type="text" name="name1" [(ngModel)]="name">
+      <input type="text" name="name2" [(ngModel)]="name">
+      <input type="text" name="name3" [(ngModel)]="name">
+    </div>
+
+    <ul>
+      @for (friend of friends; track friend) {
+        <li>{{ friend }}</li>
+      }
+    </ul>
+  </div>
+</section>

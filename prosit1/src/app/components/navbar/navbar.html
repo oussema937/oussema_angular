@@ -1,0 +1,7 @@
+<nav class="app-nav">
+  @for (link of links; track link.label) {
+    <a href="#" [class.active]="link.label === active" (click)="go(link); $event.preventDefault()">
+      {{ link.label }}
+    </a>
+  }
+</nav>

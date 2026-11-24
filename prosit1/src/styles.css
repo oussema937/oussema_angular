@@ -1,0 +1,133 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.css';
+
+/* ================= Thème coloré & dynamique ================= */
+:root {
+  --indigo: #6366f1;
+  --violet: #8b5cf6;
+  --pink: #ec4899;
+  --orange: #f97316;
+  --amber: #fbbf24;
+  --teal: #14b8a6;
+  --green: #22c55e;
+  --red: #ef4444;
+  --ink: #1e1b4b;
+  --muted: #6b7280;
+  --grad-main: linear-gradient(135deg, #6366f1 0%, #ec4899 55%, #f97316 100%);
+  --grad-cool: linear-gradient(135deg, #6366f1, #06b6d4);
+  --grad-green: linear-gradient(135deg, #22c55e, #14b8a6);
+  --grad-orange: linear-gradient(135deg, #f97316, #fbbf24);
+  --grad-red: linear-gradient(135deg, #ef4444, #ec4899);
+  --radius: 24px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 0%, #e0e7ff 0%, transparent 40%),
+    radial-gradient(circle at 90% 20%, #fce7f3 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, #ffedd5 0%, transparent 45%),
+    #faf5ff;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5 { letter-spacing: -0.01em; }
+
+/* ---------- Cartes de la page d'accueil (profil / amis / notifications) ---------- */
+.panel {
+  position: relative;
+  display: flex; gap: 28px; align-items: center;
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 30px 34px;
+  margin: 0 auto 22px;
+  max-width: 1100px;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.12);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.panel::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 8px;
+  background: var(--grad-cool);
+}
+.panel:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(99, 102, 241, 0.2); }
+.panel h2 {
+  font-size: 1.6rem; font-weight: 800; margin-bottom: 14px;
+  background: var(--grad-main); -webkit-background-clip: text; background-clip: text;
+  color: transparent; display: inline-block;
+}
+.panel p { margin-bottom: 8px; }
+.panel .icon {
+  width: 76px; height: 76px; min-width: 76px; border-radius: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.1rem; color: #fff;
+  background: var(--grad-cool);
+  box-shadow: 0 8px 18px rgba(99, 102, 241, 0.35);
+  transform: rotate(-6deg);
+}
+.panel-green::before { background: var(--grad-green); }
+.panel-green .icon { background: var(--grad-green); box-shadow: 0 8px 18px rgba(34, 197, 94, 0.35); }
+.panel-orange::before { background: var(--grad-orange); }
+.panel-orange .icon { background: var(--grad-orange); box-shadow: 0 8px 18px rgba(249, 115, 22, 0.35); }
+
+/* Champs et boutons génériques */
+.panel input[type='text'] {
+  border: 2px solid #e5e7eb; border-radius: 999px; padding: 8px 16px; margin: 0 8px 8px 0;
+  outline: none; transition: border-color .2s, box-shadow .2s; width: 170px; background: #faf5ff;
+}
+.panel input[type='text']:focus { border-color: var(--indigo); box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18); }
+.panel button {
+  border: none; border-radius: 999px; padding: 9px 22px; font-weight: 700; color: #fff;
+  background: var(--grad-main); box-shadow: 0 6px 14px rgba(236, 72, 153, 0.3);
+  transition: transform .2s, box-shadow .2s;
+}
+.panel button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(236, 72, 153, 0.4); }
+.panel ul { list-style: none; padding: 0; margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.panel ul li {
+  background: linear-gradient(135deg, #e0e7ff, #fce7f3); color: var(--ink);
+  padding: 6px 16px; border-radius: 999px; font-weight: 600;
+}
+
+/* ---------- Cartes de conférences (Bootstrap .card) ---------- */
+.card {
+  border: none !important; border-radius: var(--radius) !important; overflow: hidden;
+  background: #fff; box-shadow: 0 10px 28px rgba(99, 102, 241, 0.14) !important;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.card:hover { transform: translateY(-8px) rotate(-0.4deg); box-shadow: 0 22px 44px rgba(236, 72, 153, 0.25) !important; }
+.card-img-top { height: 190px; object-fit: cover; }
+.card-title {
+  font-weight: 800;
+  background: var(--grad-main); -webkit-background-clip: text; background-clip: text; color: transparent !important;
+}
+.card-body { padding: 22px; }
+.badge { border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .8rem; color: #fff; }
+.badge.bg-success { background: var(--grad-green) !important; }
+.badge.bg-danger { background: var(--grad-red) !important; }
+
+.card .btn, .btn.btn-primary {
+  border: none; border-radius: 999px; padding: 11px 20px; font-weight: 700; color: #fff;
+  transition: transform .2s, box-shadow .2s, filter .2s;
+}
+.card .btn:hover:not(:disabled) { transform: translateY(-2px); filter: brightness(1.08); }
+.card .btn.btn-success { background: var(--grad-green); box-shadow: 0 8px 16px rgba(34, 197, 94, 0.35); }
+.card .btn.btn-orange { background: var(--grad-orange); box-shadow: 0 8px 16px rgba(249, 115, 22, 0.35); }
+.card .btn.btn-danger { background: var(--grad-red); box-shadow: 0 8px 16px rgba(239, 68, 68, 0.35); }
+.card .btn.btn-primary { background: var(--grad-cool); box-shadow: 0 8px 16px rgba(99, 102, 241, 0.35); }
+.card .btn:disabled { opacity: .8; cursor: not-allowed; }
+
+/* Zones "conférences" (titres de section et champ de recherche) */
+.container h2.fw-bold {
+  font-size: 2rem; font-weight: 800;
+  background: var(--grad-main); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.search-box .form-control {
+  border: 2px solid transparent; border-radius: 999px; padding: 16px 26px;
+  background: #fff; box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+.search-box .form-control:focus { border-color: var(--indigo); box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.2); }
+
+/* Défilement : les sections ne passent pas sous la barre fixe */
+[id] { scroll-margin-top: 80px; }

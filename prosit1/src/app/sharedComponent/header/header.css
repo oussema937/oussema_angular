@@ -1,0 +1,13 @@
+.app-header {
+  position: relative; overflow: hidden; text-align: center; color: #fff;
+  padding: 52px 16px 64px;
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 55%, #f97316 100%);
+  border-bottom-left-radius: 48px; border-bottom-right-radius: 48px;
+  box-shadow: 0 14px 36px rgba(236, 72, 153, 0.3);
+}
+.content { position: relative; z-index: 1; }
+.app-header h1 { margin: 0 0 10px; font-size: 3rem; font-weight: 800; text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); }
+.app-header p { margin: 0; font-size: 1.15rem; opacity: .95; }
+.blob { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.16); }
+.b1 { width: 260px; height: 260px; top: -90px; left: -60px; }
+.b2 { width: 200px; height: 200px; bottom: -80px; right: 8%; }

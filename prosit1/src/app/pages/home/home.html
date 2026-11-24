@@ -1,0 +1,55 @@
+<div id="conferences" class="container mt-5 mb-5">
+
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">Our Conferences</h2>
+    <p class="text-muted">Search a conference by title and reserve your place.</p>
+  </div>
+
+  <div class="search-box mb-5">
+    <input type="text" name="search" class="form-control form-control-lg"
+           placeholder="Search by title..." [(ngModel)]="searchTitle">
+  </div>
+
+  <div class="row g-4">
+
+    @for (conf of list; track conf.title) {
+      @if (conf.title.toLowerCase().includes(searchTitle.toLowerCase())) {
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-0">
+
+            <img [src]="conf.picture" class="card-img-top" alt="conference image">
+
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold">{{ conf.title | uppercase }}</h5>
+              <p class="card-text text-muted">{{ conf.description }}</p>
+              <p class="mb-2"><strong>Date :</strong> {{ conf.date | date: 'dd/MM/yyyy' }}</p>
+
+              <p class="mb-3">
+                <span class="badge" [class.bg-success]="conf.nbrMax != conf.nbrReservation"
+                                    [class.bg-danger]="conf.nbrMax == conf.nbrReservation">
+                  {{ conf.nbrMax - conf.nbrReservation }} places available
+                </span>
+              </p>
+
+              <!-- property binding [disabled] / event binding (click) -->
+              <button class="btn w-100 mt-auto"
+                      [class.btn-success]="conf.nbrMax - conf.nbrReservation >= 10"
+                      [class.btn-orange]="conf.nbrMax - conf.nbrReservation > 0 && conf.nbrMax - conf.nbrReservation < 10"
+                      [class.btn-danger]="conf.nbrMax == conf.nbrReservation"
+                      [disabled]="conf.nbrMax == conf.nbrReservation"
+                      (click)="participate(conf)">
+                Participate
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      }
+    } @empty {
+      <p class="text-center text-muted">Aucune conférence enregistrée.</p>
+    }
+
+  </div>
+</div>
